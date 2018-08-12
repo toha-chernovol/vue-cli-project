@@ -3,14 +3,20 @@
     <tr 
       v-for="user in list" 
       :key="user.id">
+      <td>
+        <router-link
+          :to="'/edit-user/' + user.id"
+          tag="a"
+          title="Edit user"
+        >
+          {{ user.id }}
+        </router-link>
+      </td>
       <td>{{ user.firstName }}</td>
       <td>{{ user.lastName }}</td>
       <td>{{ user.age }}</td>
       <td>{{ user.email }}</td>
-      <td>{{ user.balance }}</td>
-      <!-- <td>
-          <a :href="editUrl(user.id)" class="btn btn-sm">Edit</a>
-        </td> -->
+      <td>{{ user.company }}</td>
     </tr>
   </table>
 </template>

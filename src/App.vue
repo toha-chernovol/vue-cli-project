@@ -1,5 +1,7 @@
 <template>
+  
   <div id="app">
+    <nprogress-container />
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <router-link to="/">Vue cli app</router-link>
       <button 
@@ -19,32 +21,25 @@
           <router-link 
             tag="li" 
             class="nav-item" 
-            to="/">
+            to="/"
+            exact >
             <a class="nav-link">Home</a>
           </router-link>
           <router-link 
             tag="li" 
             class="nav-item" 
-            to="/users">
+            to="/users"
+            exact >
             <a class="nav-link">Users list</a>
           </router-link>
           <router-link 
             tag="li" 
             class="nav-item" 
-            to="/add-user">
-            <a class="nav-link">Users list</a>
+            to="/add-user"
+            exact >
+            <a class="nav-link">New user</a>
           </router-link>
         </ul>
-        <form class="form-inline mt-2 mt-md-0">
-          <input 
-            class="form-control mr-sm-2" 
-            type="text" 
-            placeholder="Search" 
-            aria-label="Search">
-          <button 
-            class="btn btn-outline-success my-2 my-sm-0" 
-            type="submit">Search</button>
-        </form>
       </div>
     </nav>
 
@@ -55,6 +50,16 @@
     </main>
   </div>
 </template>
+
+<script>
+import NprogressContainer from 'vue-nprogress/src/NprogressContainer'
+export default {
+  components: {
+    NprogressContainer
+  }
+}
+</script>
+
 
 <style>
 #app {
