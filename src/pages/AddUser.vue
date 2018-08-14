@@ -2,27 +2,20 @@
   <div>
     <h1>Create new user</h1>
     <user-form
-      :user="user"
-      v-model="user"
-      @input="createUser" />
-    <div 
-      v-if="userAdded" 
-      class="alert alert-success">
-      New user created!
+      v-model="user" />
+    <div class="form-group">
+      <button
+        type="button"
+        class="btn btn-success"
+        @click="createUser"
+      >Create user</button>
     </div>
   </div>
 </template>
 
 <script>
 import UserForm from '@/components/UserForm.vue'
-
-const userObj = {
-  age: 0,
-  firstName: '',
-  lastName: '',
-  company: '',
-  email: ''
-}
+import axios from '@/axios.js'
 
 export default {
   name: 'AddUser',
@@ -32,22 +25,19 @@ export default {
 
   data() {
     return {
-      user: userObj,
-      userAdded: false
+      user: {}
     }
   },
 
   methods: {
+    redirectToUsersList() {
+      this.$router.push('/users')
+    },
     createUser() {
-      var vm = this
-      this.$http
-        .post('http://localhost:3000/users/', this.user)
-        .then(() => {
-          vm.userAdded = true
-        })
-        .catch(error => {
-          console.log(error)
-        })
+      axios
+        .post('/users', this.user)
+        .then(() => this.redirectToUsersList())
+        .catch(error => console.log(error))
     }
   }
 }

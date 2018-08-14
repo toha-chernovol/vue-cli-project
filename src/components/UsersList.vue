@@ -5,11 +5,10 @@
       :key="user.id">
       <td>
         <router-link
-          :to="'/edit-user/' + user.id"
-          tag="a"
+          :to="`/edit-user/${user.id}`"
           title="Edit user"
         >
-          {{ user.id }}
+          #{{ user.id }}
         </router-link>
       </td>
       <td>{{ user.firstName }}</td>

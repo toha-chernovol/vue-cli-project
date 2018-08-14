@@ -46,18 +46,37 @@
       >
     </div>
     <div class="form-group">
-      <button
-        type="button"
-        class="btn btn-success"
-        @click="saveUser">
-        Save
-      </button>
+      <label for="user-phone">Phone:</label>
+      <input
+        id="user-phone"
+        v-model.trim="currentUser.phone"
+        type="text"
+        class="form-control"
+      >
+    </div>
+    <div class="form-group">
+      <label for="user-address">Address:</label>
+      <input
+        id="user-address"
+        v-model="currentUser.address"
+        type="text"
+        class="form-control"
+      >
+    </div>
+    <div class="form-group">
+      <label for="user-about">About:</label>
+      <textarea 
+        v-model="currentUser.about"
+        class="form-control" />
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  model: {
+    prop: 'user'
+  },
   props: {
     user: {
       type: Object,
@@ -71,13 +90,20 @@ export default {
     }
   },
 
+  watch: {
+    currentUser: {
+      deep: true,
+      handler: 'updateUser'
+    }
+  },
+
   created() {
-    this.currentUser = Object.assign({}, this.user)
+    this.currentUser = this.user
   },
 
   methods: {
-    saveUser() {
-      this.$emit('input', this.currentUser)
+    updateUser() {
+      this.$emit('input', Object.assign({}, this.currentUser))
     }
   }
 }
