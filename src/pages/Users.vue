@@ -8,7 +8,16 @@
     </div>
     <users-list 
       v-else 
-      :list="users" />
+      :list="users">
+      <!-- <tr slot="header">
+        <td>Name</td>
+        <td>Last name</td>
+      </tr> -->
+      <!-- <template slot="row" slot-scope="props">
+        <td>{{ props.firstName }}</td>
+        <td>{{ props.lastName }}</td>
+      </template> -->
+    </users-list>
   </div>
 </template>
 

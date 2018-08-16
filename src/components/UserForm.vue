@@ -1,13 +1,30 @@
 <template>
   <div>
     <div class="form-group">
+      <label for="user-avatar">Avatar</label>
+      <input
+        ref="avatar"
+        type="file"
+        @change="uploadAvatar" >
+      <button
+        type="button"
+        class="btn btn-primary"
+        @click="selectNewImage" >Upload</button>
+    </div>
+    <div class="form-group">
       <label for="user-firstname">First name:</label>
       <input
+        v-validate="'required'"
         id="user-firstname"
+        :class="{ 'is-invalid': errors.has('firstName') }"
         v-model="currentUser.firstName"
+        name="firstName"
         type="text"
         class="form-control"
       >
+      <span 
+        v-show="errors.has('firstName')" 
+        class="help-block text-danger">{{ errors.first('firstName') }}</span>
     </div>
     <div class="form-group">
       <label for="user-lastname">Last name:</label>
@@ -69,14 +86,22 @@
         v-model="currentUser.about"
         class="form-control" />
     </div>
+    <div class="form-group">
+      <label for="user-about">Registration date:</label>
+      <datepicker v-model="currentUser.registered" />
+    </div>
   </div>
 </template>
 
 <script>
 export default {
+  components: {
+    Datepicker: () => import('@/components/Datepicker.vue')
+  },
   model: {
     prop: 'user'
   },
+  inject: ['$validator'],
   props: {
     user: {
       type: Object,
@@ -104,7 +129,11 @@ export default {
   methods: {
     updateUser() {
       this.$emit('input', Object.assign({}, this.currentUser))
-    }
+    },
+    selectNewImage() {
+      this.$refs.avatar.click()
+    },
+    uploadAvatar() {}
   }
 }
 </script>

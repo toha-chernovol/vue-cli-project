@@ -59,6 +59,12 @@ export default {
         .catch(error => console.log(error))
     },
     saveUser() {
+      this.$validator.validateAll()
+      if (this.errors.any) {
+        alert('Validation errors')
+        return
+      }
+
       axios
         .put(this.restUserUrl, this.user)
         .then(() => this.redirectToUsersList())
