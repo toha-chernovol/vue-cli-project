@@ -32,9 +32,7 @@
       </tbody>
     </table>
 
-    <slot name="footer">
-      Default footer
-    </slot>
+    <slot name="footer" />
   </div>
 
 </template>

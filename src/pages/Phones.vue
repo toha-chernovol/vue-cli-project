@@ -6,20 +6,32 @@
       class="alert alert-info">
       Loading...
     </div>
-    <dashboard-list
+    <users-list
       v-else 
-      :list="users"/>
+      :list="users">
+      <tr slot="header">
+        <td>Name</td>
+        <td>Phone</td>
+      </tr>
+      <template 
+        slot="row" 
+        slot-scope="props">
+        <td>{{ props.firstName }}</td>
+        <td>{{ props.phone }}</td>
+      </template>
+    </users-list>
   </div>
 </template>
 
 <script>
-import DashboardList from '@/components/DashboardList.vue'
+import UsersList from '@/components/UsersList.vue'
+// import DashboardList from '@/components/DashboardList.vue'
 import axios from '@/axios.js'
 
 export default {
   name: 'Users',
   components: {
-    DashboardList
+    UsersList
   },
 
   data() {

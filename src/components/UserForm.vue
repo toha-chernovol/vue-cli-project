@@ -14,17 +14,12 @@
     <div class="form-group">
       <label for="user-firstname">First name:</label>
       <input
-        v-validate="'required'"
         id="user-firstname"
-        :class="{ 'is-invalid': errors.has('firstName') }"
         v-model="currentUser.firstName"
         name="firstName"
         type="text"
         class="form-control"
       >
-      <span 
-        v-show="errors.has('firstName')" 
-        class="help-block text-danger">{{ errors.first('firstName') }}</span>
     </div>
     <div class="form-group">
       <label for="user-lastname">Last name:</label>

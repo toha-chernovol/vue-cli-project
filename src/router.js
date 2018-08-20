@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './pages/Index.vue'
 import Users from './pages/Users.vue'
+import Phones from './pages/Phones.vue'
 import EditUser from './pages/EditUser.vue'
 import AddUser from './pages/AddUser.vue'
 
@@ -20,6 +21,11 @@ export default new Router({
       path: '/users',
       name: 'users',
       component: Users
+    },
+    {
+      path: '/phones',
+      name: 'phones',
+      component: Phones
     },
     {
       path: '/edit-user/:id',

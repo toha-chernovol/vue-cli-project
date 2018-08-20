@@ -35,6 +35,13 @@
           <router-link 
             tag="li" 
             class="nav-item" 
+            to="/phones"
+            exact >
+            <a class="nav-link">Phones list</a>
+          </router-link>
+          <router-link 
+            tag="li" 
+            class="nav-item" 
             to="/add-user"
             exact >
             <a class="nav-link">New user</a>
